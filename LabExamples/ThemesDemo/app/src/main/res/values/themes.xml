@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ThemesDemo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.ThemesDemo" parent="Base.Theme.ThemesDemo" />
+    <style name="myAppTheme" parent="Base.Theme.ThemesDemo">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/textcolor_textView</item>
+        <item name="android:textSize">26dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/background_textview</item>
+    </style>
+</resources>

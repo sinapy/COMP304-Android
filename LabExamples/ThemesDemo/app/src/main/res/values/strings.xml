@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ThemesDemo</string>
+    <string name="textvidew2_text">Mobile App Development</string>
+    <string name="textview1_text">Demo of Ap Themese</string>
+</resources>

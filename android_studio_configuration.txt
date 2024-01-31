@@ -1,0 +1,3 @@
+Android 10.0('Q') in sdk
+Intel x86 emulator in sdk Toold
+Add Device Pixel 6 pro with Android 24
