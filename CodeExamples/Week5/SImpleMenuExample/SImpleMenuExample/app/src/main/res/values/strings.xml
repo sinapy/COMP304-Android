@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Simple Menu Example</string>
+    <string name="start">Start game</string>
+    <string name="stop">Stop game</string>
+    <string name="help">Help</string>
+    <string name="nothelp">Not Help</string>
+    <string name="play">Play</string>
+    <string name="playWell">Play Well</string>
+
+
+    <string name="edit">Edit item</string>
+    <string name="delete">Delete item</string>
+    <string name="notdelete">Do not Delete item</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+
+
+</resources>
