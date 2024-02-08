@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">sinasarsharpour_COMP304Sec002_Lab01_Ex02</string>
+    <string name="prompt">Choose a city</string>
+    <string name="option_1">IN-PERSON</string>
+    <string name="option_2">ONLINE</string>
+    <string name="radio_group_title">Event Format</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="register_button_text">Register</string>
+</resources>
