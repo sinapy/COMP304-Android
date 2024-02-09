@@ -6,6 +6,7 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView.AdapterContextMenuInfo
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 
 //
 class MainActivity : AppCompatActivity() {
+    var shouldKeepMenuOpen: Boolean = false
+    var menu: Menu? = null
+    var shouldShowOtherMenu: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,16 +29,42 @@ class MainActivity : AppCompatActivity() {
 
     //
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.game_menu, menu)
+        this.menu = menu;
+        menuInflater.inflate(R.menu.game_menu, menu)
         return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.clear()
+
+        if (shouldShowOtherMenu) {
+            menuInflater.inflate(R.menu.context_menu, menu)
+        } else {
+            menuInflater.inflate(R.menu.game_menu, menu)
+        }
+
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        if (shouldKeepMenuOpen) {
+            // If the flag is set, reopen the menu.
+            window.openPanel(Window.FEATURE_OPTIONS_PANEL, null)
+            shouldKeepMenuOpen = false // Reset the flag
+        }
+        return super.onMenuOpened(featureId, menu)
     }
 
     //
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         when (item.getItemId()) {
-            R.id.start -> Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show()
+            R.id.start -> {
+                shouldShowOtherMenu = !shouldShowOtherMenu // Toggle the flag
+                shouldKeepMenuOpen = true
+                invalidateOptionsMenu()
+                Toast.makeText(this, "You selected start!", Toast.LENGTH_LONG).show()
+            }
             R.id.play -> Toast.makeText(this, "You selected Play!", Toast.LENGTH_LONG).show()
             R.id.playWell -> Toast.makeText(this, "You selected Play Well!", Toast.LENGTH_LONG)
                 .show()
@@ -47,6 +77,13 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onOptionsMenuClosed(menu: Menu?) {
+
+        if (!shouldKeepMenuOpen) {
+            // Reopen the options menu if the flag is set
+            super.onOptionsMenuClosed(menu)
+        }
+    }
     //
     override fun onCreateContextMenu(
         menu: ContextMenu?, v: View?,
@@ -59,8 +96,8 @@ class MainActivity : AppCompatActivity() {
 
     //
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        val info = item.getMenuInfo() as AdapterContextMenuInfo
-        return when (item.getItemId()) {
+        val info = item.menuInfo as AdapterContextMenuInfo?
+        return when (item.itemId) {
             R.id.edit -> {
                 Toast.makeText(this, "You selected Edit!", Toast.LENGTH_LONG).show()
                 true
