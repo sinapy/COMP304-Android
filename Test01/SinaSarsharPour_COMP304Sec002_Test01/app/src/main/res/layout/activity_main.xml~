@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <Spinner
-        android:id="@+id/semesterDurationSpinner"
+        android:id="@+id/provinces_spinner"
         android:layout_width="374dp"
         android:layout_height="27dp"
         android:layout_marginTop="36dp"
@@ -60,29 +60,29 @@
         android:layout_marginTop="41dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/semesterDurationSpinner">
+        app:layout_constraintTop_toBottomOf="@+id/provinces_spinner">
 
         <RadioButton
-            android:id="@+id/softwareAnalystRadioButton"
+            android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Software Analyst" />
 
         <RadioButton
-            android:id="@+id/healthInformaticsRadioButton"
+            android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Health Informatics" />
 
         <RadioButton
-            android:id="@+id/softwareTechnicianRadioButton"
+            android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Software Technician" />
     </RadioGroup>
 
     <CheckBox
-        android:id="@+id/DatabaseCheckBox"
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -92,33 +92,33 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/WebCheckBox"
+        android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Web"
-        app:layout_constraintStart_toEndOf="@+id/DatabaseCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/MobileCheckBox"
+        android:id="@+id/checkBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:text="Mobile"
-        app:layout_constraintStart_toEndOf="@+id/WebCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/JavaCheckBox"
+        android:id="@+id/checkBox4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:text="Java"
-        app:layout_constraintStart_toEndOf="@+id/MobileCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/checkBox3"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
@@ -131,10 +131,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DatabaseCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     <EditText
-        android:id="@+id/tuitionPerSemesterEditText"
+        android:id="@+id/editTextNumberDecimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -152,7 +152,7 @@
         android:layout_marginBottom="32dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tuitionPerSemesterEditText" />
+        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal" />
 
     <Button
         android:id="@+id/pickADateButton"
@@ -161,7 +161,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginBottom="19dp"
         android:text="Pick a Date"
-        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toEndOf="@+id/programStartDateEditText" />
 
     <!--    <DatePicker-->
