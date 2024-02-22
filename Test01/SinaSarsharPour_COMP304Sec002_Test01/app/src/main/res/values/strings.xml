@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SinaSarsharPour_COMP304Sec002_Test01</string>
+
+    <string name="prompt">Duration of Program</string>
+
+    <string-array name="semester_durations">
+        <item>2 semesters</item>
+        <item>4 semesters</item>
+        <item>6 semesters</item>
+        <item>8 semesters</item>
+
+    </string-array>
 </resources>
