@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class TVsActivity : AppCompatActivity() {
-    private var checkBoxTV1: CheckBox? = null;
-    private var checkBoxTV2: CheckBox? = null;
-    private var checkBoxTV3: CheckBox? = null;
+    lateinit var checkBoxTV1: CheckBox
+    lateinit var checkBoxTV2: CheckBox
+    lateinit var checkBoxTV3: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,17 @@ class TVsActivity : AppCompatActivity() {
             actionBar.show()
         }
 
-        var title = "Accessories"
+        checkBoxTV1.setOnClickListener {
+            check(it)
+        }
+        checkBoxTV2.setOnClickListener {
+            check(it)
+        }
+        checkBoxTV3.setOnClickListener {
+            check(it)
+        }
+
+        var title = "TVs"
 
         checkoutBtn.setOnClickListener {
             check(it)
@@ -47,18 +57,18 @@ class TVsActivity : AppCompatActivity() {
         val myPreference = getSharedPreferences("info", 0)
         val preferenceEditor = myPreference.edit()
 
-        val tv1State = checkBoxTV1!!.isChecked
-        val tv2State = checkBoxTV2!!.isChecked
-        val tv3State = checkBoxTV3!!.isChecked
+        val tv1State = checkBoxTV1.isChecked
+        val tv2State = checkBoxTV2.isChecked
+        val tv3State = checkBoxTV3.isChecked
 
         preferenceEditor.putBoolean("tv1State", tv1State)
-        preferenceEditor.putString("tv1Name", checkBoxTV1!!.text as String?)
+        preferenceEditor.putString("tv1Name", checkBoxTV1.text as String?)
         preferenceEditor.putBoolean("tv2State", tv2State)
-        preferenceEditor.putString("tv2Name", checkBoxTV2!!.text as String?)
+        preferenceEditor.putString("tv2Name", checkBoxTV2.text as String?)
         preferenceEditor.putBoolean("tv3State", tv3State)
-        preferenceEditor.putString("tv3Name", checkBoxTV3!!.text as String?)
+        preferenceEditor.putString("tv3Name", checkBoxTV3.text as String?)
 
-        preferenceEditor.commit()
+        preferenceEditor.apply()
         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
     }
 

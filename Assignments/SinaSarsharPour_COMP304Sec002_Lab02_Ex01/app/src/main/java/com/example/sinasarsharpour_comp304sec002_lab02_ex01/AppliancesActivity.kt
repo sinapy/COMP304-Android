@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class AppliancesActivity : AppCompatActivity() {
-    private var checkBoxAppliance1: CheckBox? = null;
-    private var checkBoxAppliance2: CheckBox? = null;
-    private var checkBoxAppliance3: CheckBox? = null;
+    lateinit var checkBoxAppliance1: CheckBox
+    lateinit var checkBoxAppliance2: CheckBox
+    lateinit var checkBoxAppliance3: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,16 @@ class AppliancesActivity : AppCompatActivity() {
 
         var title = "Accessories"
 
+        checkBoxAppliance1.setOnClickListener {
+            check(it)
+        }
+        checkBoxAppliance2.setOnClickListener {
+            check(it)
+        }
+        checkBoxAppliance3.setOnClickListener {
+            check(it)
+        }
+
         checkoutBtn.setOnClickListener {
             check(it)
             intent = Intent(applicationContext, CheckOutActivity::class.java)
@@ -47,18 +57,18 @@ class AppliancesActivity : AppCompatActivity() {
         val myPreference = getSharedPreferences("info", 0)
         val preferenceEditor = myPreference.edit()
 
-        val appliance1State = checkBoxAppliance1!!.isChecked
-        val appliance2State = checkBoxAppliance2!!.isChecked
-        val appliance3State = checkBoxAppliance3!!.isChecked
+        val appliance1State = checkBoxAppliance1.isChecked
+        val appliance2State = checkBoxAppliance2.isChecked
+        val appliance3State = checkBoxAppliance3.isChecked
 
         preferenceEditor.putBoolean("appliance1State", appliance1State)
-        preferenceEditor.putString("appliance1Name", checkBoxAppliance1!!.text as String?)
+        preferenceEditor.putString("appliance1Name", checkBoxAppliance1.text as String?)
         preferenceEditor.putBoolean("appliance2State", appliance2State)
-        preferenceEditor.putString("appliance2Name", checkBoxAppliance2!!.text as String?)
+        preferenceEditor.putString("appliance2Name", checkBoxAppliance2.text as String?)
         preferenceEditor.putBoolean("appliance3State", appliance3State)
-        preferenceEditor.putString("appliance3Name", checkBoxAppliance3!!.text as String?)
+        preferenceEditor.putString("appliance3Name", checkBoxAppliance3.text as String?)
 
-        preferenceEditor.commit()
+        preferenceEditor.apply()
         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
     }
 

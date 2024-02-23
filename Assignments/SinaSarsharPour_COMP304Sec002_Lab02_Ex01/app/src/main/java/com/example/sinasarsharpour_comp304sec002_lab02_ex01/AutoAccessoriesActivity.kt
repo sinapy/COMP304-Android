@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class AutoAccessoriesActivity : AppCompatActivity() {
-    private var checkBoxAutoAccessories1: CheckBox? = null;
-    private var checkBoxAutoAccessories2: CheckBox? = null;
-    private var checkBoxAutoAccessories3: CheckBox? = null;
+    lateinit var checkBoxAutoAccessories1: CheckBox
+    lateinit var checkBoxAutoAccessories2: CheckBox
+    lateinit var checkBoxAutoAccessories3: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,16 @@ class AutoAccessoriesActivity : AppCompatActivity() {
 
         var title = "Accessories"
 
+        checkBoxAutoAccessories1.setOnClickListener {
+            check(it)
+        }
+        checkBoxAutoAccessories2.setOnClickListener {
+            check(it)
+        }
+        checkBoxAutoAccessories3.setOnClickListener {
+            check(it)
+        }
+
         checkoutBtn.setOnClickListener {
             check(it)
             intent = Intent(applicationContext, CheckOutActivity::class.java)
@@ -47,18 +57,18 @@ class AutoAccessoriesActivity : AppCompatActivity() {
         val myPreference = getSharedPreferences("info", 0)
         val preferenceEditor = myPreference.edit()
 
-        val autoAccessory1State = checkBoxAutoAccessories1!!.isChecked
-        val autoAccessory2State = checkBoxAutoAccessories2!!.isChecked
-        val autoAccessory3State = checkBoxAutoAccessories3!!.isChecked
+        val autoAccessory1State = checkBoxAutoAccessories1.isChecked
+        val autoAccessory2State = checkBoxAutoAccessories2.isChecked
+        val autoAccessory3State = checkBoxAutoAccessories3.isChecked
 
         preferenceEditor.putBoolean("autoAccessory1State", autoAccessory1State)
-        preferenceEditor.putString("autoAccessory1Name", checkBoxAutoAccessories1!!.text as String?)
+        preferenceEditor.putString("autoAccessory1Name", checkBoxAutoAccessories1.text as String?)
         preferenceEditor.putBoolean("autoAccessory2State", autoAccessory2State)
-        preferenceEditor.putString("autoAccessory2Name", checkBoxAutoAccessories2!!.text as String?)
+        preferenceEditor.putString("autoAccessory2Name", checkBoxAutoAccessories2.text as String?)
         preferenceEditor.putBoolean("autoAccessory3State", autoAccessory3State)
-        preferenceEditor.putString("autoAccessory3Name", checkBoxAutoAccessories3!!.text as String?)
+        preferenceEditor.putString("autoAccessory3Name", checkBoxAutoAccessories3.text as String?)
 
-        preferenceEditor.commit()
+        preferenceEditor.apply()
         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
     }
 

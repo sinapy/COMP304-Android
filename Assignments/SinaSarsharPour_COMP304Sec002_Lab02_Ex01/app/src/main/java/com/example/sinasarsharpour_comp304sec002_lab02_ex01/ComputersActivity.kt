@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class ComputersActivity : AppCompatActivity() {
-    private var checkBoxComputer1: CheckBox? = null;
-    private var checkBoxComputer2: CheckBox? = null;
-    private var checkBoxComputer3: CheckBox? = null;
+    lateinit var checkBoxComputer1: CheckBox
+    lateinit var checkBoxComputer2: CheckBox
+    lateinit var checkBoxComputer3: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,16 @@ class ComputersActivity : AppCompatActivity() {
 
         var title = "Accessories"
 
+        checkBoxComputer1.setOnClickListener {
+            check(it)
+        }
+        checkBoxComputer2.setOnClickListener {
+            check(it)
+        }
+        checkBoxComputer3.setOnClickListener {
+            check(it)
+        }
+
         checkoutBtn.setOnClickListener {
             check(it)
             intent = Intent(applicationContext, CheckOutActivity::class.java)
@@ -47,16 +57,16 @@ class ComputersActivity : AppCompatActivity() {
         val myPreference = getSharedPreferences("info", 0)
         val preferenceEditor = myPreference.edit()
 
-        val computer1State = checkBoxComputer1!!.isChecked
-        val computer2State = checkBoxComputer2!!.isChecked
-        val computer3State = checkBoxComputer3!!.isChecked
+        val computer1State = checkBoxComputer1.isChecked
+        val computer2State = checkBoxComputer2.isChecked
+        val computer3State = checkBoxComputer3.isChecked
 
         preferenceEditor.putBoolean("computer1State", computer1State)
-        preferenceEditor.putString("computer1Name", checkBoxComputer1!!.text as String?)
+        preferenceEditor.putString("computer1Name", checkBoxComputer1.text as String?)
         preferenceEditor.putBoolean("computer2State", computer2State)
-        preferenceEditor.putString("computer2Name", checkBoxComputer2!!.text as String?)
+        preferenceEditor.putString("computer2Name", checkBoxComputer2.text as String?)
         preferenceEditor.putBoolean("computer3State", computer3State)
-        preferenceEditor.putString("computer3Name", checkBoxComputer3!!.text as String?)
+        preferenceEditor.putString("computer3Name", checkBoxComputer3.text as String?)
 
         preferenceEditor.commit()
         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()

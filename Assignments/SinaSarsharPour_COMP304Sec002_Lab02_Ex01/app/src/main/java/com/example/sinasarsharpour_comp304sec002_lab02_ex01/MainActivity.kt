@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
             intent = Intent(applicationContext, HomeSelectActivity::class.java)
             startActivity(intent)
 
-            val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPreferenceFile, Context.MODE_PRIVATE)
-            sharedPreferences.edit().clear().commit()
+            val sharedPreferences: SharedPreferences = this.getSharedPreferences("info", Context.MODE_PRIVATE)
+            sharedPreferences.edit().clear().apply()
         }
     }
 }
